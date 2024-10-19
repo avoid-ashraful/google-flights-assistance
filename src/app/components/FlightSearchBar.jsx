@@ -52,13 +52,6 @@ const FlightSearch = (props)  => {
         );
     }, []);
 
-    // Swap function for switching departure and arrival locations
-    const swapLocations = () => {
-        const temp = departureLocation;
-        setDepartureLocation(arrivalLocation);
-        setArrivalLocation(temp);
-    };
-
     const formatDate = (date)  => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
@@ -101,65 +94,8 @@ const FlightSearch = (props)  => {
     };
 
     const customStyles = {
-        control: (base) => ({
-            ...base,
-            backgroundColor: '#2c2c2e', // Black background
-            color: 'white',
-            borderRadius: '5px',
-            border: '1px solid #555', // Light gray border
-            padding: '5px',
-            boxShadow: 'none',
-            "&:hover": {
-                border: "1px solid #888", // Change border color on hover
-            }
-        }),
-        input: (base) => ({
-            ...base,
-            color: 'white', // Change the text color inside the input to white
-        }),
-        singleValue: (provided) => ({
-            ...provided,
-            color: 'white', // Ensure the selected value's text is white
-        }),
-        dropdownIndicator: (provided) => ({
-            ...provided,
-            color: '#ccc', // Dropdown arrow color
-        }),
-        menu: (provided) => ({
-            ...provided,
-            backgroundColor: '#2c2c2e', // Background for the dropdown
-            color: 'white'
-        }),
-        option: (provided, state) => ({
-            ...provided,
-            backgroundColor: state.isSelected ? '#555' : '#2c2c2e',
-            color: 'white',
-            "&:hover": {
-                backgroundColor: '#444', // Hover color for dropdown options
-            }
-        }),
     };
 
-
-    // Function to fetch airport data based on the search query
-    const handleSearchChange = async (inputValue) => {
-        if (inputValue.length > 3) {
-            try {
-                const data = await searchAirport(inputValue); // Call the search function (API)
-                return data.data.map((airport) => ({
-                    value: airport.skyId,
-                    label: `${airport.presentation.title},  ${airport.presentation.subtitle} - (${airport.skyId})`,
-                    skyId: airport.skyId, // Store additional data like skyId
-                    entityId: airport.entityId // Store additional data like entityId
-                }));
-            } catch (err) {
-                setError(err.message);
-                return [];
-            }
-        } else {
-            return [];
-        }
-    };
 
     const handleDepSearchChange = async (inputValue) => {
         if (inputValue.length > 3) {
@@ -185,17 +121,12 @@ const FlightSearch = (props)  => {
     };
 
     const handleDepartSearch = (selectedOption) => {
-
         setDepartureLocation(selectedOption);
-
     }
 
     const handleArrivalSearch = (selectedOption) => {
-
         setArrivalLocation(selectedOption);
-
     }
-
 
     return (
         <div className={styles.container}>
@@ -224,7 +155,7 @@ const FlightSearch = (props)  => {
                             <AsyncSelect
                                 cacheOptions
                                 value={departureLocation} // Set default value for departure
-                                loadOptions={handleSearchChange} // Fetch options as user types
+                                loadOptions={handleDepSearchChange} // Fetch options as user types
                                 onChange={(selectedOption) => handleDepartSearch(selectedOption)}
                                 placeholder="Search Departure Airport"
                                 className="location-select"
