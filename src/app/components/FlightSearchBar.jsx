@@ -1,4 +1,3 @@
-// Add this at the top of FlightSearchBar.jsx
 "use client";
 
 import {useEffect, useState} from 'react';
@@ -68,7 +67,6 @@ const FlightSearch = (props)  => {
         return `${year}-${month}-${day}`;
     }
 
-    // Search button click handler
     const handleFlightSearch = async () => {
 
         const searchParams = {
@@ -180,12 +178,6 @@ const FlightSearch = (props)  => {
         } else {
             return [];
         }
-    };
-
-
-    // Function to handle the change event of the dropdown
-    const handleTripTypeChange = (e) => {
-        setTripType(e.target.value);
     };
 
     const handleTripClassChange = (e) => {

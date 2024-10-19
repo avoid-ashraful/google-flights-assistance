@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FlightSearch from './FlightSearchBar'; // Assuming FlightSearch is in the same directory
+import FlightSearch from './FlightSearchBar';
 import SearchResults from './SearchResults';
 
 export default function FlightSearchApp() {
@@ -8,8 +8,8 @@ export default function FlightSearchApp() {
 
     // Function to handle search from FlightSearch component
     const handleSearch = (criteria) => {
-        setSearchCriteria(criteria); // Update state with new search criteria
-        setIsSearchClicked(true); // Show search results
+        setSearchCriteria(criteria);
+        setIsSearchClicked(true);
     };
 
     console.log("searchCriteria", searchCriteria)

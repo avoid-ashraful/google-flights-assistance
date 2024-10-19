@@ -1,8 +1,4 @@
-// "use client";
-
-// app/layout.js
 import './globals.css';
-// import Navbar from '../app/components/Navbar';
 
 export const metadata = {
   title: 'Flight Search',
@@ -13,8 +9,7 @@ export default function RootLayout({ children }) {
   return (
       <html lang="en">
       <body>
-      {/*<Navbar /> /!* Persistent Navigation Bar *!/*/}
-      <main>{children}</main> {/* Main content will be rendered here */}
+      <main>{children}</main>
       </body>
       </html>
   );
