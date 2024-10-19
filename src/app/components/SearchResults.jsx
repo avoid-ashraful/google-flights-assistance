@@ -252,7 +252,7 @@ const SearchResults = ({searchCriteria}) => {
     let flyData = searchCriteria && searchCriteria?.data?.itineraries.map(el => {
 
         // Create an array to store multiple flight segments for each leg
-        const legsWithStops = el.legs.length > 0 &&  el.legs.map((leg, legIndex) => {
+        const legsWithStops = el.legs.map((leg, legIndex) => {
             const flightSegments = leg.segments.map((segment, segmentIndex) => {
                 // Calculate stopDuration between segments, if there's a next segment
                 let stopDuration = null;

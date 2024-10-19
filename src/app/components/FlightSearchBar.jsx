@@ -212,14 +212,6 @@ const FlightSearch = (props)  => {
             <div className={styles.searchBox}>
                 <div className={styles.tripOptions}>
                     <div className="flight-options-container">
-                        {/*<select*/}
-                        {/*    value={tripType} // Bind the value of the dropdown to state*/}
-                        {/*    onChange={handleTripTypeChange}*/}
-                        {/*    className="trip-dropdown">*/}
-                        {/*    /!*<option value="round-trip">Round trip</option>*!/*/}
-                        {/*    <option value="one-way">One way</option>*/}
-                        {/*    /!*<option value="multi-city">Multi-city</option>*!/*/}
-                        {/*</select>*/}
 
                         <PassengersDropdown />
 
